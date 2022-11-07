@@ -11,6 +11,7 @@ import {
   Cards,
   Card,
   CardTitle,
+  CardDescription,
   Footer,
   FooterCopyRight,
 } from '../styles/Home.styles';
@@ -31,17 +32,23 @@ const HomePage: NextPage = () => {
         <Cards>
           <Card href="https://nextjs.org/docs">
             <CardTitle>Documentation &rarr;</CardTitle>
-            <p>Find in-depth information about Next.js features and API.</p>
+            <CardDescription>
+              Find in-depth information about Next.js features and API.
+            </CardDescription>
           </Card>
 
           <Card href="https://nextjs.org/learn">
             <CardTitle>Learn &rarr;</CardTitle>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
+            <CardDescription>
+              Learn about Next.js in an interactive course with quizzes!
+            </CardDescription>
           </Card>
 
           <Card href="https://github.com/vercel/next.js/tree/canary/examples">
             <CardTitle>Examples &rarr;</CardTitle>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
+            <CardDescription>
+              Discover and deploy boilerplate example Next.js projects.
+            </CardDescription>
           </Card>
 
           <Card
@@ -49,10 +56,10 @@ const HomePage: NextPage = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <h2>Deploy &rarr;</h2>
-            <p>
+            <CardTitle>Deploy &rarr;</CardTitle>
+            <CardDescription>
               Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
+            </CardDescription>
           </Card>
         </Cards>
       </Main>
