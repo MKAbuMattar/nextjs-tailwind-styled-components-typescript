@@ -1,10 +1,5 @@
-import Document, {
-  DocumentContext,
-  Head,
-  Html,
-  Main,
-  NextScript,
-} from 'next/document';
+import type { DocumentContext } from 'next/document';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class _Document extends Document {
@@ -36,7 +31,7 @@ export default class _Document extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="en">
         <Head>
           <link rel="icon" href="/favicon.ico" />
           <meta name="theme-color" content="#000000" />
