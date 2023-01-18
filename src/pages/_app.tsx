@@ -1,9 +1,10 @@
+import { type AppType } from 'next/dist/shared/lib/utils';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 
 import 'tailwindcss/tailwind.css';
 
-const _App = ({ Component, pageProps }: AppProps) => {
+const _App: AppType = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
@@ -15,7 +16,7 @@ const _App = ({ Component, pageProps }: AppProps) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </>
   );
 };
