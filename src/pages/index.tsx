@@ -6,6 +6,11 @@ import {
   Container,
   Main,
   Section,
+  Footer,
+  FooterCopyRight,
+} from '@/styles/Global.style';
+
+import {
   Title,
   TitleLink,
   Description,
@@ -14,16 +19,17 @@ import {
   Card,
   CardTitle,
   CardDescription,
-  SubTitle,
-  ButtonGroup,
-  Button,
-  Footer,
-  FooterCopyRight,
-} from '../styles/Home.style';
+} from '@/styles/Home.style';
+
+import { Nav, NavListItem } from '@/styles/Nav.style';
 
 const HomePage: NextPage = () => {
   return (
     <Container>
+      <Nav>
+        <NavListItem href="/">Go to Home Page</NavListItem>
+        <NavListItem href="/extra">Go to Extra Page</NavListItem>
+      </Nav>
       <Main>
         <Section>
           <Title>
@@ -68,34 +74,6 @@ const HomePage: NextPage = () => {
               </CardDescription>
             </Card>
           </Cards>
-        </Section>
-
-        <Section>
-          <SubTitle>Conditional Button</SubTitle>
-          <ButtonGroup>
-            <Button>Primary</Button>
-            <Button outline>Primary Outline</Button>
-          </ButtonGroup>
-          <ButtonGroup>
-            <Button disabled>Primary Disabled</Button>
-            <Button outline disabled>
-              Primary Outline Disabled
-            </Button>
-          </ButtonGroup>
-          <ButtonGroup>
-            <Button danger>Danger</Button>
-            <Button danger outline>
-              Danger Outline
-            </Button>
-          </ButtonGroup>
-          <ButtonGroup>
-            <Button danger disabled>
-              Danger Disabled
-            </Button>
-            <Button danger outline disabled>
-              Danger Outline Disabled
-            </Button>
-          </ButtonGroup>
         </Section>
       </Main>
 
