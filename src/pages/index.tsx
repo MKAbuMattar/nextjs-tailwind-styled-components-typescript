@@ -1,93 +1,122 @@
 import type { NextPage } from 'next';
 import Image from 'next/image';
 
-//styles
-import {
-  Container,
-  Main,
-  Section,
-  Footer,
-  FooterCopyRight,
-} from '@/styles/Global.style';
+// font
+import { Inter } from 'next/font/google';
+const inter = Inter({ subsets: ['latin'] });
 
+// style
 import {
-  Title,
-  TitleLink,
-  Description,
-  DescriptionCodeHighlight,
+  Main,
+  Nav,
+  CodeContainer,
+  Code,
+  LogoContainer,
+  LogoLink,
+  Logo,
+  Content,
+  ContentInnerImage,
   Cards,
   Card,
   CardTitle,
+  CardTitleIcon,
   CardDescription,
 } from '@/styles/Home.style';
 
-import { Nav, NavListItem } from '@/styles/Nav.style';
-
 const HomePage: NextPage = () => {
   return (
-    <Container>
+    <Main>
       <Nav>
-        <NavListItem href="/">Go to Home Page</NavListItem>
-        <NavListItem href="/extra">Go to Extra Page</NavListItem>
+        <CodeContainer>
+          Get started by editing&nbsp;
+          <Code>src/pages/index.tsx</Code>
+        </CodeContainer>
+        <LogoContainer>
+          <LogoLink
+            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            By{' '}
+            <Logo
+              src="/vercel.svg"
+              alt="Vercel Logo"
+              width={100}
+              height={24}
+              priority
+            />
+          </LogoLink>
+        </LogoContainer>
       </Nav>
-      <Main>
-        <Section>
-          <Title>
-            Welcome to <TitleLink href="https://nextjs.org">Next.js!</TitleLink>
-          </Title>
 
-          <Description>
-            Get started by editing{' '}
-            <DescriptionCodeHighlight>pages/index.tsx</DescriptionCodeHighlight>
-          </Description>
+      <Content>
+        <ContentInnerImage
+          src="/next.svg"
+          alt="Next.js Logo"
+          width={180}
+          height={37}
+          priority
+        />
+      </Content>
 
-          <Cards>
-            <Card href="https://nextjs.org/docs">
-              <CardTitle>Documentation &rarr;</CardTitle>
-              <CardDescription>
-                Find in-depth information about Next.js features and API.
-              </CardDescription>
-            </Card>
-
-            <Card href="https://nextjs.org/learn">
-              <CardTitle>Learn &rarr;</CardTitle>
-              <CardDescription>
-                Learn about Next.js in an interactive course with quizzes!
-              </CardDescription>
-            </Card>
-
-            <Card href="https://github.com/vercel/next.js/tree/canary/examples">
-              <CardTitle>Examples &rarr;</CardTitle>
-              <CardDescription>
-                Discover and deploy boilerplate example Next.js projects.
-              </CardDescription>
-            </Card>
-
-            <Card
-              href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <CardTitle>Deploy &rarr;</CardTitle>
-              <CardDescription>
-                Instantly deploy your Next.js site to a public URL with Vercel.
-              </CardDescription>
-            </Card>
-          </Cards>
-        </Section>
-      </Main>
-
-      <Footer>
-        <FooterCopyRight
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+      <Cards>
+        <Card
+          className={'group'}
+          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </FooterCopyRight>
-      </Footer>
-    </Container>
+          <CardTitle className={`${inter.className}`}>
+            Docs <CardTitleIcon>-&gt;</CardTitleIcon>
+          </CardTitle>
+          <CardDescription className={`${inter.className}`}>
+            Find in-depth information about Next.js features and API.
+          </CardDescription>
+        </Card>
+
+        <Card
+          className={'group'}
+          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <CardTitle className={`${inter.className}`}>
+            Learn <CardTitleIcon>-&gt;</CardTitleIcon>
+          </CardTitle>
+          <CardDescription className={`${inter.className}`}>
+            Learn about Next.js in an interactive course with&nbsp;quizzes!
+          </CardDescription>
+        </Card>
+
+        <Card
+          className={'group'}
+          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <CardTitle className={`${inter.className}`}>
+            Templates <CardTitleIcon>-&gt;</CardTitleIcon>
+          </CardTitle>
+          <CardDescription className={`${inter.className}`}>
+            Discover and deploy boilerplate example Next.js&nbsp;projects.
+          </CardDescription>
+        </Card>
+
+        <Card
+          className={'group'}
+          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <CardTitle className={`${inter.className}`}>
+            Deploy <CardTitleIcon>-&gt;</CardTitleIcon>
+          </CardTitle>
+          <CardDescription className={`${inter.className}`}>
+            Instantly deploy your Next.js site to a shareable URL with Vercel.
+          </CardDescription>
+        </Card>
+      </Cards>
+    </Main>
   );
 };
 
