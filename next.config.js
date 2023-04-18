@@ -1,11 +1,11 @@
+const TwinMacro = require('./twin-macro.cjs');
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = TwinMacro({
   reactStrictMode: true,
   swcMinify: true,
   i18n: {
     locales: ['en'],
     defaultLocale: 'en',
   },
-};
-
-export default nextConfig;
+});

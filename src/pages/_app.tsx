@@ -2,7 +2,9 @@ import type { AppType } from 'next/dist/shared/lib/utils';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 
+// style
 import 'tailwindcss/tailwind.css';
+import GlobalStyles from '@/styles/Global.style';
 
 const _App: AppType = ({ Component, pageProps }: AppProps) => {
   return (
@@ -16,6 +18,7 @@ const _App: AppType = ({ Component, pageProps }: AppProps) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <GlobalStyles />
       <Component {...pageProps} />
     </>
   );
