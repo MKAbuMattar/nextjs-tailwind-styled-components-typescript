@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import tw from 'twin.macro';
 
 const GlobalStyles = createGlobalStyle`
   :root {
@@ -24,6 +25,24 @@ const GlobalStyles = createGlobalStyle`
       )
       rgb(var(--background-start-rgb));
   }
+`;
+
+export const Container = tw.div`
+  flex
+  min-h-screen
+  flex-col
+  items-center
+  justify-center
+  py-2
+`;
+
+export const Main = tw.main`
+  flex
+  flex-col
+  min-h-screen
+  items-center
+  justify-between
+  p-24
 `;
 
 export default GlobalStyles;
