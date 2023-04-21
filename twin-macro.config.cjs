@@ -1,4 +1,7 @@
 const path = require('path');
+const babelPluginMacros = require('babel-plugin-macros');
+const babelPluginStyledComponents = require('babel-plugin-styled-components');
+const babelPluginSyntaxTypescript = require('@babel/plugin-syntax-typescript');
 
 // The folders containing files importing twin.macro
 const includedDirs = [path.resolve(__dirname, 'src')];
@@ -6,29 +9,24 @@ const includedDirs = [path.resolve(__dirname, 'src')];
 module.exports = function TwinMacro(nextConfig) {
   return {
     ...nextConfig,
-    webpack(config, options) {
-      const { dev, isServer } = options;
-      config.module = config.module || {};
-      config.module.rules = config.module.rules || [];
+    webpack(config, { dev, isServer, defaultLoaders }) {
+      config.module = {
+        ...(config.module || {}),
+        rules: [...(config.module?.rules || [])],
+      };
       config.module.rules.push({
-        test: /\.(tsx|ts)$/,
+        test: /\.(tsx|ts|jsx|js)$/,
         include: includedDirs,
         use: [
-          options.defaultLoaders.babel,
+          defaultLoaders.babel,
           {
             loader: 'babel-loader',
             options: {
               sourceMaps: dev,
               plugins: [
-                require.resolve('babel-plugin-macros'),
-                [
-                  require.resolve('babel-plugin-styled-components'),
-                  { ssr: true, displayName: true },
-                ],
-                [
-                  require.resolve('@babel/plugin-syntax-typescript'),
-                  { isTSX: true },
-                ],
+                babelPluginMacros,
+                [babelPluginStyledComponents, { ssr: true, displayName: true }],
+                [babelPluginSyntaxTypescript, { isTSX: true }],
               ],
             },
           },
@@ -46,11 +44,9 @@ module.exports = function TwinMacro(nextConfig) {
         };
       }
 
-      if (typeof nextConfig.webpack === 'function') {
-        return nextConfig.webpack(config, options);
-      } else {
-        return config;
-      }
+      return typeof nextConfig.webpack === 'function'
+        ? nextConfig.webpack(config, { ...options, defaultLoaders })
+        : config;
     },
   };
 };

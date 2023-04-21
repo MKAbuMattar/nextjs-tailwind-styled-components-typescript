@@ -7,20 +7,22 @@ import babelPluginSyntaxTypescript from '@babel/plugin-syntax-typescript';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+// The folders containing files importing twin.macro
 const includedDirs = [path.resolve(__dirname, 'src')];
 
 export default function TwinMacro(nextConfig) {
   return {
     ...nextConfig,
-    webpack(config, options) {
-      const { dev, isServer } = options;
-      config.module = config.module || {};
-      config.module.rules = config.module.rules || [];
+    webpack(config, { dev, isServer, defaultLoaders }) {
+      config.module = {
+        ...(config.module || {}),
+        rules: [...(config.module?.rules || [])],
+      };
       config.module.rules.push({
-        test: /\.(tsx|ts)$/,
+        test: /\.(tsx|ts|jsx|js)$/,
         include: includedDirs,
         use: [
-          options.defaultLoaders.babel,
+          defaultLoaders.babel,
           {
             loader: 'babel-loader',
             options: {
@@ -46,11 +48,9 @@ export default function TwinMacro(nextConfig) {
         };
       }
 
-      if (typeof nextConfig.webpack === 'function') {
-        return nextConfig.webpack(config, options);
-      } else {
-        return config;
-      }
+      return typeof nextConfig.webpack === 'function'
+        ? nextConfig.webpack(config, { ...options, defaultLoaders })
+        : config;
     },
   };
 }
