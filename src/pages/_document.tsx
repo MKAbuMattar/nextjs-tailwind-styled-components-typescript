@@ -33,6 +33,7 @@ export default class _Document extends Document {
     return (
       <Html lang="en">
         <Head>
+          <link rel="manifest" href="/manifest.webmanifest" />
           <link rel="icon" href="/favicon.ico" />
           <meta name="theme-color" content="#000000" />
         </Head>
