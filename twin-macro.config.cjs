@@ -6,7 +6,19 @@ const babelPluginSyntaxTypescript = require('@babel/plugin-syntax-typescript');
 // The folders containing files importing twin.macro
 const includedDirs = [path.resolve(__dirname, 'src')];
 
-module.exports = function TwinMacro(nextConfig) {
+/**
+ * Next.js plugin to configure the Twin Macro.
+ *
+ * @param {import('next').NextConfig} nextConfig - The existing Next.js configuration.
+ * @param {Object} options - Configuration options for Twin Macro.
+ * @param {boolean} options.ssr - Enable server-side rendering for styled components. Default: true.
+ * @param {boolean} options.displayName - Enable displaying component names in development. Default: true.
+ * @param {boolean} options.isTSX - Enable TypeScript support for Twin Macro. Default: true.
+ * @returns {import('next').NextConfig} - The modified Next.js configuration.
+ */
+const twinMacroConfig = (nextConfig = {}, options = {}) => {
+  const { ssr = true, displayName = true, isTSX = true } = options;
+
   return {
     ...nextConfig,
     webpack(config, { dev, isServer, defaultLoaders }) {
@@ -25,8 +37,8 @@ module.exports = function TwinMacro(nextConfig) {
               sourceMaps: dev,
               plugins: [
                 babelPluginMacros,
-                [babelPluginStyledComponents, { ssr: true, displayName: true }],
-                [babelPluginSyntaxTypescript, { isTSX: true }],
+                [babelPluginStyledComponents, { ssr, displayName }],
+                [babelPluginSyntaxTypescript, { isTSX }],
               ],
             },
           },
@@ -50,3 +62,5 @@ module.exports = function TwinMacro(nextConfig) {
     },
   };
 };
+
+module.exports = twinMacroConfig;

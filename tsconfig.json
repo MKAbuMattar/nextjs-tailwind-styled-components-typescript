@@ -28,6 +28,7 @@
   },
   "include": [
     ".eslintrc.cjs",
+    ".prettierrc.cjs",
     "next-env.d.ts",
     "environment.d.ts",
     "**/*.ts",

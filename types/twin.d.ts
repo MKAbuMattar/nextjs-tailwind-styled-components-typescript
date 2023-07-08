@@ -1,5 +1,9 @@
 import 'twin.macro';
-import styledImport, { CSSProp, css as cssImport } from 'styled-components';
+import styledImport, { 
+  CSSProp,
+  css as cssImport,
+  DefaultTheme
+} from 'styled-components';
 
 declare module 'twin.macro' {
   const styled: typeof styledImport;
@@ -8,11 +12,16 @@ declare module 'twin.macro' {
 
 declare module 'react' {
   interface HTMLAttributes<T> extends DOMAttributes<T> {
-    css?: CSSProp;
+    css?: CSSProp<DefaultTheme>;
     tw?: string;
   }
   interface SVGProps<T> extends SVGProps<SVGSVGElement> {
-    css?: CSSProp;
+    css?: CSSProp<DefaultTheme>;
+    tw?: string;
+  }
+
+  interface AnchorHTMLAttributes<T> extends DOMAttributes<T> {
+    css?: CSSProp<DefaultTheme>;
     tw?: string;
   }
 }
