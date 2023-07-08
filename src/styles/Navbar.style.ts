@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import Link from 'next/link';
 
+// types
+import type { StyledLinkProps } from '@/types/styled';
+
 export const Navbar = tw.nav`
   flex
   h-full
@@ -14,7 +17,7 @@ export const Navbar = tw.nav`
   border-b
 `;
 
-export const NavListItem = styled(Link)(
+export const NavListItem = styled(Link)<StyledLinkProps>(
   tw`
   rounded-3xl
   px-4
