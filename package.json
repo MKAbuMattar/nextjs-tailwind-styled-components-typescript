@@ -15,10 +15,16 @@
     "lint": "next lint",
     "lint:fix": "npm run lint --fix",
     "format": "prettier --check src/**/*.{ts,tsx}",
-    "format:fix": "prettier --write src/**/*.{ts,tsx}"
+    "format:fix": "prettier --write src/**/*.{ts,tsx}",
+    "prepare": "husky install",
+    "postbuild": "next-sitemap --config next-sitemap.config.cjs"
   },
   "dependencies": {
+    "@types/next-pwa": "5.6.4",
     "next": "13.4.9",
+    "next-pwa": "5.6.0",
+    "next-seo": "6.1.0",
+    "next-sitemap": "4.1.8",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "styled-components": "6.0.3"
@@ -26,6 +32,8 @@
   "devDependencies": {
     "@babel/core": "7.22.8",
     "@babel/plugin-syntax-typescript": "7.22.5",
+    "@commitlint/cli": "17.6.6",
+    "@commitlint/config-conventional": "17.6.6",
     "@types/babel-plugin-macros": "3.1.0",
     "@types/eslint": "8.44.0",
     "@types/node": "20.4.1",
@@ -41,6 +49,7 @@
     "babel-plugin-styled-components": "2.1.4",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.9",
+    "husky": "8.0.3",
     "postcss": "8.4.25",
     "prettier": "2.8.8",
     "prettier-plugin-tailwindcss": "0.3.0",
