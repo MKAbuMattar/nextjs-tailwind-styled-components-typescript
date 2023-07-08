@@ -8,7 +8,6 @@ import 'tailwindcss/tailwind.css';
 import GlobalStyles from '@/styles/Global.style';
 
 const _App: AppType = ({ Component, pageProps }: AppProps) => {
-
   return (
     <Fragment>
       <Head>
